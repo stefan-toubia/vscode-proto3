@@ -100,12 +100,17 @@
   "scripts": {
     "vscode:prepublish": "tsc -p ./",
     "compile": "tsc -watch -p ./",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "vscode-test"
   },
   "devDependencies": {
+    "@types/chai": "^4.3.11",
     "@types/mocha": "^2.2.32",
     "@types/node": "^6.14.9",
     "@types/vscode": "^1.50.0",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.8",
+    "chai": "^4.3.10",
     "husky": "^7.0.1",
     "mocha": "^6.2.2",
     "prettier": "^2.3.2",
