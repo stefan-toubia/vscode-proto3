@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package foo;
+
+import "google/protobuf/descriptor.proto";
+
+service FooService {
+  rpc DoBar(Foo) returns (Bar);
+  rpc DoBaz(Foo) returns (Baz) {
+    option (opt) = 2;
+  };
+}
+
+extend google.protobuf.MethodOptions {
+  int32 opt = 99999;
+}
+
+message Foo {}
+
+message Bar {
+  int32 i32 = 1;
+}
+
+message Baz {
+  extend google.protobuf.MessageOptions {
+    string fizz = 49999;
+    uint64 bitmask = 29386 [deprecated = true];
+  }
+  option (Baz.fizz) = "buzz";
+
+  enum NestedEnum {
+    NULL = 0;
+    ONE = 1;
+    TWO = 2;
+  }
+
+  message NestedMessage {
+    bool b = 1;
+  }
+
+  float f = 1;
+  NestedMessage nm = 2;
+  oneof oneval {
+    int32 oneval_a = 3;
+    int64 oneval_b = 4;
+  }
+
+  reserved 99, 101;
+
+  optional bytes b = 5;
+  map<int32, string> m = 6;
+}
